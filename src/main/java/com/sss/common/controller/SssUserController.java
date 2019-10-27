@@ -100,6 +100,9 @@ public class SssUserController {
         RedisManager redisManager =(RedisManager) redisCacheManager.getRedisManager();
         for (Object key : keys) {
             if (key.toString().equals("shiro:cache:com.sss.common.shiro.CustomRealm.authorizationCache:2")) {
+                System.out.println("werewrw");
+
+
                 redisManager.del(key.toString().getBytes());
             }
 
