@@ -1,0 +1,12 @@
+excel:
+    type: xls,xlsx
+image:
+    config:
+        path: /images/**
+    save:
+        path: C://Images//
+    size: 10240
+    type: png,jpg,jpeg
+    urlPath: /images/
+    windows:
+        path: file:C://Images//

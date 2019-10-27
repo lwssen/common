@@ -1,0 +1,42 @@
+spring:
+    datasource:
+        druid:
+            driverClassName: com.mysql.jdbc.Driver
+            url: jdbc:mysql://localhost:3306/myshiro?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&nullNamePatternMatchesAll=true&useSSL=false
+            username: root
+            password: root
+            #配置监控统计拦截的filters，去掉后监控界面SQL无法进行统计，’wall’用于防火墙
+            filters: config,stat,wall
+          #Druid监控拦截器
+          #是否开启SQL监控
+            filter:
+              stat:
+                enabled: true
+          #若进行单元测试，先暂时关闭拦截器
+            web-stat-filter:
+                enabled: true
+                url-pattern: /*
+            stat-view-servlet:
+              #Druid监控页面配置
+              enabled: true
+              reset-enable: false
+              url-pattern: /druid/*
+              login-username: sss
+              login-password: sss123456
+              allow: 127.0.0.1
+#             #初始化大小
+            initial-size: 1
+            #最大连接数
+            max-active: 100
+           #最小连接数
+            min-idle: 1
+            max-wait: 60000
+            #间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+            time-between-eviction-runs-millis: 60000
+            #一个连接在池中最小生存的时间，单位是毫秒
+            min-evictable-idle-time-millis: 300000
+            #检查池中的连接是否仍可用的 SQL 语句,drui会连接到数据库执行该SQL, 如果正常返回，则表示连接可用，否则表示连接不可用
+            validation-query: SELECT 1
+            validation-query-timeout: 10000
+            #当程序请求连接，池在分配连接时，是否先检查该连接是否有效。(高效)
+            test-while-idle: true

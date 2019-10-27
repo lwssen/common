@@ -1,0 +1,48 @@
+server:
+  port: 9080
+spring:
+  profiles:
+    include: file-config,image,jdbc,redis
+      #日期设置配置
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+
+#  rabbitmq:
+#    host: localhost
+#    username: guest
+#    password: guest
+#    # 开启发送失败退回
+#    publisher-returns: true
+#    # 开启发送确认
+#    publisher-confirms: true
+#    # 开启ACK
+#    listener:
+#      direct:
+#        acknowledge-mode: manual
+#      simple:
+#        acknowledge-mode: manual
+
+
+#日志配置
+logging:
+  level:
+    com.sss.common.dao: debug
+    root: info
+    org:
+      springframework:
+        web:  info
+      hibernate: info
+
+#mybatis-plus配置
+mybatis-plus:
+#  xml文件扫描路径
+  mapper-locations: classpath*:/mapper/*.xml
+  global-config:
+    db-config:
+      table-underline: true
+    banner: false
+  configuration:
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
